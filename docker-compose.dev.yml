@@ -1,0 +1,48 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: rouvia-mongodb-dev
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=mapdata
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: client/Dockerfile.dev
+    container_name: rouvia-frontend-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+      - node_modules_volume:/app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: server/Dockerfile.dev
+    env_file:
+      - ./server/.env
+    container_name: rouvia-backend-dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./server:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+
+volumes:
+  node_modules_volume:
+  mongodb_data:
