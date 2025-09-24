@@ -14,7 +14,7 @@ from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
 import datetime
 import uvicorn
-from routers import plan_route_audio, sidequest, user_profile, cohere_rag_experimental
+from routers import plan_route_audio, sidequest, user_profile, cohere_rag_experimental, area_summary
 from services import google_places  # ← now this sees the env var loaded above
 
 app = FastAPI(
@@ -60,6 +60,7 @@ app.include_router(plan_route_audio.router, prefix="", tags=["plan_route"])
 app.include_router(sidequest.router, prefix="", tags=["sidequest"])
 app.include_router(user_profile.router, prefix="", tags=["user_profile"])
 app.include_router(cohere_rag_experimental.router, prefix="", tags=["experimental"])
+app.include_router(area_summary.router, prefix="", tags=["area_summary"])
 
 
 class DebugIntent(BaseModel):

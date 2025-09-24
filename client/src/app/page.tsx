@@ -9,6 +9,7 @@ import MapboxMap from "@/components/MapboxMap";
 import UserProfile from "@/components/UserProfile";
 import ChatInterface from "@/components/ChatInterface";
 import RoutePlanningPanel from "@/components/RoutePlanningPanel";
+import AreaSummaryPanel from "@/components/AreaSummaryPanel";
 import { RouteProvider } from "@/components/context/route-context";
 
 export default function Home() {
@@ -79,6 +80,9 @@ export default function Home() {
             <ChatInterface userSub={userSub} />
           </div>
         )}
+        
+        {/* Area Summary Panel */}
+        <AreaSummaryPanel />
       </div>
     </RouteProvider>
   );

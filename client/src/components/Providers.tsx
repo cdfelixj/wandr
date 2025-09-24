@@ -1,6 +1,7 @@
 'use client';
 
 import { AuthProvider } from '@/contexts/AuthContext';
+import { AreaSummaryProvider } from '@/contexts/AreaSummaryContext';
 import { ReactNode } from 'react';
 
 interface ProvidersProps {
@@ -10,7 +11,9 @@ interface ProvidersProps {
 export default function Providers({ children }: ProvidersProps) {
   return (
     <AuthProvider>
-      {children}
+      <AreaSummaryProvider>
+        {children}
+      </AreaSummaryProvider>
     </AuthProvider>
   );
 }

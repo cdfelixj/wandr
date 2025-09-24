@@ -6,6 +6,7 @@ import mapboxgl from "mapbox-gl";
 import type { LineString } from "geojson";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRoute } from "@/components/context/route-context";
+import { useAreaSummary } from "@/contexts/AreaSummaryContext";
 
 const MAPBOX_TOKEN =
   process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "YOUR_MAPBOX_TOKEN_HERE";
@@ -42,6 +43,7 @@ declare global {
 
 export default function MapboxMap() {
   const { waypoints, stops, userLocation } = useRoute();
+  const { fetchAreaSummary, currentRadius } = useAreaSummary();
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
 
@@ -149,12 +151,36 @@ export default function MapboxMap() {
     if (map.isStyleLoaded()) onLoad();
     else map.once("load", onLoad);
 
+    // Add click handler for area summaries
+    const handleMapClick = (e: mapboxgl.MapMouseEvent) => {
+      const { lng, lat } = e.lngLat;
+      console.log('Map clicked at:', { lat, lng });
+      
+      // Create a temporary marker to show where user clicked
+      const clickMarker = new mapboxgl.Marker({ color: '#FF6B6B' })
+        .setLngLat([lng, lat])
+        .addTo(map);
+      
+      // Remove the marker after 3 seconds
+      setTimeout(() => {
+        clickMarker.remove();
+      }, 3000);
+      
+      // Fetch area summary
+      fetchAreaSummary(lat, lng, currentRadius);
+    };
+
+    map.on('click', handleMapClick);
+
     mapRef.current = map;
 
     return () => {
       if (window.__routeMarkers) {
         window.__routeMarkers.forEach((m) => m.remove());
         window.__routeMarkers = undefined;
+      }
+      if (mapRef.current) {
+        mapRef.current.off('click', handleMapClick);
       }
       mapRef.current?.remove();
       mapRef.current = null;
