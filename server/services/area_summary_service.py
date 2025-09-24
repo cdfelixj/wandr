@@ -360,7 +360,8 @@ class AreaSummaryService:
             common_types = [t for t, c in sorted(type_counts.items(), key=lambda x: x[1], reverse=True)[:5]]
             
             prompt = f"""
-            You are a knowledgeable local guide providing an engaging summary of {location_name}. 
+            You are a straightforward, honest local guide providing a realistic assessment of {location_name}. 
+            Be frank and authentic - if an area is quiet or unremarkable, say so. Don't oversell or be promotional.
             
             Context:
             - Location: {location_name}
@@ -369,13 +370,21 @@ class AreaSummaryService:
             - Common place types: {', '.join(common_types)}
             - Notable places: {', '.join(notable_places[:5])}
             
-            Please provide a comprehensive but concise summary covering:
-            1. What this area is known for (2-3 sentences)
-            2. Brief history or interesting facts about the area (1-2 sentences) 
-            3. What visitors can expect to find and do here (2-3 sentences)
-            4. The general atmosphere and vibe (1-2 sentences)
+            Please provide an honest, realistic summary covering:
+            1. What this area is actually known for - be specific about landmarks, historical sites, or famous tourist destinations if any exist. If it's just a regular neighborhood, say that.
+            2. Brief history or interesting facts about notable landmarks, historical events, or famous buildings/sites in the area. Skip generic history.
+            3. What visitors will realistically find here - focus on actual attractions, landmarks, or noteworthy destinations. Don't pad with generic businesses.
+            4. The genuine atmosphere - is it touristy, residential, commercial, boring, vibrant? Be honest.
+            5. If lets say an area is a tourist hub like Lan Kwai Fong, a Nightlife hub, mention that. If it's a quiet residential area with no attractions, say that too.
             
-            Make it engaging and informative, like you're telling a friend about this neighborhood. Avoid being overly promotional. Keep the total response under 200 words.
+            Prioritize mentioning:
+            - Famous landmarks, monuments, or iconic buildings
+            - Historical sites or areas of cultural significance  
+            - Well-known tourist attractions or destinations
+            - Notable architecture or urban features
+            
+            If the area lacks notable landmarks or attractions, be honest about it being a regular neighborhood. 
+            Don't manufacture excitement. Keep the total response under 200 words and be genuine.
             """
             
             response = openai_client.chat.completions.create(
