@@ -61,7 +61,7 @@ export default function Home() {
         <div className="absolute top-6 right-6 z-20 flex items-center space-x-2">
           <Image
             src="/logo.png"
-            alt="Rouvia Logo"
+            alt="Wandr Logo"
             width={90}
             height={50}
             className="object-contain"

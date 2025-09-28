@@ -1,7 +1,7 @@
 {
-  "name": "rouvia",
+  "name": "wandr",
   "version": "1.0.0",
-  "description": "Rouvia - Full-stack application",
+  "description": "Wandr - Full-stack application",
   "private": true,
   "scripts": {
     "dev:client": "cd client && npm run dev",

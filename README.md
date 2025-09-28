@@ -2,12 +2,12 @@
 <a id="readme-top"></a>
 
 <!-- PROJECT SHIELDS -->
-<img width="1440" height="777" alt="rouvia" src="https://github.com/user-attachments/assets/8517a75c-d8ae-4f77-82e2-089afbfe2406" />
+<img width="1440" height="777" alt="wandr" src="https://github.com/user-attachments/assets/8517a75c-d8ae-4f77-82e2-089afbfe2406" />
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h1 align="center">Rouvia</h1>
+  <h1 align="center">Wandr</h1>
 
   <p align="center">
     AI voice assistant for your everyday travels  
@@ -21,14 +21,14 @@
 
 ## 📖 About The Project
 
-Rouvia is a smart, hands-free travel assistant that turns navigation into a conversation.  
+Wandr is a smart, hands-free travel assistant that turns navigation into a conversation.  
 Instead of manually typing and juggling multiple apps, users can simply **talk or text** their plans.  
-Rouvia processes natural language, understands complex multi-stop requests, and builds optimized routes—making travel both **safer** and **more enjoyable**.
+Wandr processes natural language, understands complex multi-stop requests, and builds optimized routes—making travel both **safer** and **more enjoyable**.
 
 ### Inspiration
-Navigation apps today aren’t built for how humans actually communicate. Drivers are forced into rigid commands, creating unsafe distractions. We imagined: *what if trip planning was as natural as talking to a friend who knows the area?*  
+Navigation apps today aren't built for how humans actually communicate. Drivers are forced into rigid commands, creating unsafe distractions. We imagined: *what if trip planning was as natural as talking to a friend who knows the area?*  
 
-That idea became Rouvia.
+That idea became Wandr.
 
 ---
 
@@ -51,7 +51,7 @@ That idea became Rouvia.
 
 ## 🛠️ How We Built It
 
-Rouvia is a **modern full-stack AI application** powered by a multi-stage processing pipeline.
+Wandr is a **modern full-stack AI application** powered by a multi-stage processing pipeline.
 
 ### Frontend
 - **Next.js 15**, **React**, **TypeScript**
@@ -78,3 +78,77 @@ Rouvia is a **modern full-stack AI application** powered by a multi-stage proces
 - **MongoDB** for user data & preferences
 - **Redis** for caching & session management
 - **Kubernetes** for scalability (future-ready)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+
+- Python 3.11+
+- Docker & Docker Compose
+
+### Quick Start
+```bash
+# Clone the repository
+git clone https://github.com/your-username/wandr.git
+cd wandr
+
+# Start development environment
+./dev-start.bat
+```
+
+### Manual Setup
+1. **Backend Setup**
+   ```bash
+   cd server
+   pip install -r requirements.txt
+   uvicorn main:app --reload
+   ```
+
+2. **Frontend Setup**
+   ```bash
+   cd client
+   npm install
+   npm run dev
+   ```
+
+---
+
+## 📱 Usage
+
+1. **Voice Input**: Click the microphone and speak naturally
+   - *"I need to get groceries and pick up dry cleaning before 5 PM"*
+   - *"Find me a good coffee shop near downtown"*
+
+2. **Text Input**: Type your travel plans in natural language
+
+3. **Route Optimization**: Let Wandr handle the complex routing logic
+
+4. **Sidequest Discovery**: Explore spontaneous activities based on your preferences
+
+---
+
+## 🤝 Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 📞 Contact
+
+Project Link: [https://github.com/your-username/wandr](https://github.com/your-username/wandr)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

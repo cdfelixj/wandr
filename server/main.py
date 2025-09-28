@@ -18,8 +18,8 @@ from routers import plan_route_audio, sidequest, user_profile, cohere_rag_experi
 from services import google_places  # ← now this sees the env var loaded above
 
 app = FastAPI(
-    title="Rouvia API",
-    description="API for the Rouvia application",
+    title="Wandr API",
+    description="API for the Wandr application",
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
@@ -44,7 +44,7 @@ app.add_middleware(
 
 @app.get("/", summary="Root endpoint", response_model=Dict[str, str])
 async def read_root():
-    return {"message": "Welcome to Rouvia API", "docs": "/docs"}
+    return {"message": "Welcome to Wandr API", "docs": "/docs"}
 
 
 @app.get("/api/health", summary="Health check endpoint", response_model=Dict[str, Any])

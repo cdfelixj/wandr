@@ -1,7 +1,7 @@
 services:
   mongodb:
     image: mongo:7.0
-    container_name: rouvia-mongodb-dev
+    container_name: wandr-mongodb-dev
     ports:
       - "27017:27017"
     volumes:
@@ -14,7 +14,7 @@ services:
     build:
       context: .
       dockerfile: client/Dockerfile.dev
-    container_name: rouvia-frontend-dev
+    container_name: wandr-frontend-dev
     ports:
       - "3000:3000"
     volumes:
@@ -31,7 +31,7 @@ services:
       dockerfile: server/Dockerfile.dev
     env_file:
       - ./server/.env
-    container_name: rouvia-backend-dev
+    container_name: wandr-backend-dev
     ports:
       - "8000:8000"
     volumes:

@@ -2,7 +2,7 @@
 
 ## Mission Statement
 
-Rouvia revolutionizes the driving experience by providing intelligent, hands-free navigation assistance that understands natural language and creates optimal routes without manual input. We envision a future where drivers can focus on the road while our AI-powered system handles all navigation complexities.
+Wandr revolutionizes the driving experience by providing intelligent, hands-free navigation assistance that understands natural language and creates optimal routes without manual input. We envision a future where drivers can focus on the road while our AI-powered system handles all navigation complexities.
 
 ## Core Vision
 
@@ -24,7 +24,7 @@ Rouvia revolutionizes the driving experience by providing intelligent, hands-fre
 
 ## Solution Overview
 
-Rouvia addresses these challenges through:
+Wandr addresses these challenges through:
 
 ### 1. **Natural Language Processing**
 - Voice-first interface that understands conversational requests
@@ -189,7 +189,7 @@ Voice Input → Whisper → Text → Gemini → Intent → Places API → Gemini
 ## Success Vision
 
 ### 5-Year Vision
-Rouvia becomes the leading voice-powered navigation platform, trusted by millions of drivers worldwide. Our AI-powered system not only provides optimal routes but learns and adapts to each user's unique preferences, making every journey more efficient, safe, and enjoyable.
+Wandr becomes the leading voice-powered navigation platform, trusted by millions of drivers worldwide. Our AI-powered system not only provides optimal routes but learns and adapts to each user's unique preferences, making every journey more efficient, safe, and enjoyable.
 
 ### Impact Goals
 - **Safety**: Reduce navigation-related accidents by 25%
@@ -199,6 +199,6 @@ Rouvia becomes the leading voice-powered navigation platform, trusted by million
 
 ## Call to Action
 
-Join us in revolutionizing the driving experience. Rouvia isn't just another navigation app—it's the future of intelligent, voice-powered transportation assistance that puts safety, efficiency, and user experience at the forefront of every journey.
+Join us in revolutionizing the driving experience. Wandr isn't just another navigation app—it's the future of intelligent, voice-powered transportation assistance that puts safety, efficiency, and user experience at the forefront of every journey.
 
-**"Drive smarter. Drive safer. Drive with Rouvia."**
+**"Drive smarter. Drive safer. Drive with Wandr."**

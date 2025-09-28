@@ -1,7 +1,7 @@
 {
-  "name": "rouvia-server",
+  "name": "wandr-server",
   "version": "1.0.0",
-  "description": "Backend server for Rouvia application",
+  "description": "Backend server for Wandr application",
   "main": "index.js",
   "scripts": {
     "start": "python main.py",

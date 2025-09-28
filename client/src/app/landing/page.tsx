@@ -28,7 +28,7 @@ export default function LandingPage() {
                 <div className="w-55 h-55 relative mb-[-50]">
                   <Image
                     src="/logo.png"
-                    alt="Rouvia Logo"
+                    alt="Wandr Logo"
                     width={120}
                     height={120}
                     className="w-full h-full object-contain drop-shadow-xl"
@@ -89,7 +89,7 @@ export default function LandingPage() {
                 <div className="relative">
                   <Image
                     src="/hero-image-2.png"
-                    alt="Rouvia Hero Image"
+                    alt="Wandr Hero Image"
                     width={150}
                     height={225}
                     className="w-full h-auto object-contain drop-shadow-2xl"
@@ -116,7 +116,7 @@ export default function LandingPage() {
                 <div className="relative rounded-xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300">
                   <Image
                     src="/screenshot-1.png"
-                    alt="Rouvia Screenshot 1 - Voice Navigation Interface"
+                    alt="Wandr Screenshot 1 - Voice Navigation Interface"
                     width={800}
                     height={600}
                     className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300"
@@ -132,7 +132,7 @@ export default function LandingPage() {
                 <div className="relative rounded-xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300">
                   <Image
                     src="/screenshot-2.png"
-                    alt="Rouvia Screenshot 2 - Route Planning"
+                    alt="Wandr Screenshot 2 - Route Planning"
                     width={400}
                     height={600}
                     className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300"
@@ -145,7 +145,7 @@ export default function LandingPage() {
                 <div className="relative rounded-xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300">
                   <Image
                     src="/screenshot-3.png"
-                    alt="Rouvia Screenshot 3 - Sidequest Discovery"
+                    alt="Wandr Screenshot 3 - Sidequest Discovery"
                     width={400}
                     height={600}
                     className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300"

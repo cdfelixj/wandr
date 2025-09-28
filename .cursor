@@ -1,4 +1,4 @@
-# Cursor AI Assistant Rules for Rouvia Project
+# Cursor AI Assistant Rules for Wandr Project
 
 ## Core Principles
 - Always follow best software practices
@@ -13,7 +13,7 @@
 - ALWAYS update styling.md after UI/styling changes
 - ALWAYS update vision.md after feature/scope changes
 
-## Project Context: Rouvia - Smart Hands-Free Driver Assistance
+## Project Context: Wandr - Smart Hands-Free Driver Assistance
 
 ### Function
 For smart hands-free driver assistance. Create specific routes with natural language:

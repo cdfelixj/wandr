@@ -1,8 +1,8 @@
-# Rouvia Architecture
+# Wandr Architecture
 
 ## System Overview
 
-Rouvia is a smart hands-free driver assistance system that uses natural language processing and AI to create optimal routes for users. The system combines voice input, AI-powered intent parsing, and real-time mapping to provide intelligent navigation assistance.
+Wandr is a smart hands-free driver assistance system that uses natural language processing and AI to create optimal routes for users. The system combines voice input, AI-powered intent parsing, and real-time mapping to provide intelligent navigation assistance.
 
 ## High-Level Architecture
 

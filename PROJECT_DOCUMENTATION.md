@@ -1,8 +1,8 @@
-# Rouvia Project Documentation
+# Wandr Project Documentation
 
 ## Inspiration
 
-The inspiration for Rouvia came from a fundamental problem we all face: **navigation systems are not designed for how humans actually communicate**. Traditional GPS systems force drivers to manually input destinations while driving, creating dangerous distractions. They require rigid, specific commands instead of understanding natural language.
+The inspiration for Wandr came from a fundamental problem we all face: **navigation systems are not designed for how humans actually communicate**. Traditional GPS systems force drivers to manually input destinations while driving, creating dangerous distractions. They require rigid, specific commands instead of understanding natural language.
 
 We were inspired by the vision of making navigation human again. What if you could simply say "I need to get a haircut before my date at 5" and have an AI system understand your intent, find the best salon, and create an optimized route that fits your schedule? What if navigation could be as natural as talking to a knowledgeable friend who knows the area?
 
@@ -10,7 +10,7 @@ The core inspiration was transforming travel from a mechanical, manual process i
 
 ## What it does
 
-Rouvia is a smart, hands-free travel assistant that turns travel into a conversation. Instead of searching and screenshotting, users simply text or talk: "I need to get a haircut before my date at 5" and Rouvia translates your intent into real routes using voice recognition, Gemini, Cohere, and Google's routing APIs.
+Wandr is a smart, hands-free travel assistant that turns travel into a conversation. Instead of searching and screenshotting, users simply text or talk: "I need to get a haircut before my date at 5" and Wandr translates your intent into real routes using voice recognition, Gemini, Cohere, and Google's routing APIs.
 
 ### Core Features:
 
@@ -45,7 +45,7 @@ Rouvia is a smart, hands-free travel assistant that turns travel into a conversa
 
 ## How we built it
 
-Rouvia is built as a modern full-stack application with a sophisticated AI-powered pipeline that transforms voice input into optimized routes.
+Wandr is built as a modern full-stack application with a sophisticated AI-powered pipeline that transforms voice input into optimized routes.
 
 ### Architecture Overview
 
@@ -118,7 +118,7 @@ Voice Input → Whisper → Text → Gemini → Intent → Places API → Gemini
 
 ## Challenges we ran into
 
-Building Rouvia presented several significant technical and design challenges:
+Building Wandr presented several significant technical and design challenges:
 
 ### AI Integration Complexity
 - **Challenge**: Coordinating multiple AI services (Whisper, Gemini, Cohere) in a seamless pipeline
@@ -200,7 +200,7 @@ Building Rouvia presented several significant technical and design challenges:
 - **Testing Strategy**: AI systems require different testing approaches; traditional unit tests must be supplemented with integration and behavioral tests
 - **Team Collaboration**: Building AI-powered applications requires close collaboration between frontend, backend, and AI specialists
 
-## What's next for Rouvia
+## What's next for Wandr
 
 ### Immediate Roadmap (Next 3-6 months)
 - **Enhanced User Learning**: Implement advanced machine learning to better understand user preferences and behavior patterns
@@ -232,6 +232,6 @@ Building Rouvia presented several significant technical and design challenges:
 - **Advanced Security**: Implement enhanced security features including end-to-end encryption and privacy controls
 - **API Ecosystem**: Build comprehensive API ecosystem for third-party integrations and developer tools
 
-Rouvia represents the future of intelligent navigation - where technology serves human needs through natural interaction, intelligent optimization, and personalized experiences. We're excited to continue pushing the boundaries of what's possible in voice-powered, AI-driven transportation assistance.
+Wandr represents the future of intelligent navigation - where technology serves human needs through natural interaction, intelligent optimization, and personalized experiences. We're excited to continue pushing the boundaries of what's possible in voice-powered, AI-driven transportation assistance.
 
-**"Drive smarter. Drive safer. Drive with Rouvia."**
+**"Drive smarter. Drive safer. Drive with Wandr."**

@@ -1,8 +1,8 @@
-# Rouvia Styling Guide
+# Wandr Styling Guide
 
 ## Design Philosophy
 
-Rouvia follows a modern, minimalist design approach focused on driver safety and ease of use. The interface prioritizes clarity, accessibility, and hands-free operation while maintaining a professional and trustworthy aesthetic.
+Wandr follows a modern, minimalist design approach focused on driver safety and ease of use. The interface prioritizes clarity, accessibility, and hands-free operation while maintaining a professional and trustworthy aesthetic.
 
 ## Design Principles
 
@@ -267,7 +267,7 @@ font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
 const mapStyle = {
   version: 8,
   sources: {
-    'rouvia-style': {
+        'wandr-style': {
       type: 'raster',
       tiles: ['https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/{z}/{x}/{y}?access_token=YOUR_TOKEN'],
       tileSize: 256
