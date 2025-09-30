@@ -371,7 +371,7 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
           onClick={() => setMode("chat")}
           className={`flex-1 py-3 px-4 text-sm font-medium transition-colors rounded-tl-2xl ${
             mode === "chat"
-              ? "text-green-600 border-b-2 border-green-600 bg-green-50"
+              ? "text-primary-600 border-b-2 border-primary-600 bg-primary-50"
               : "text-gray-500 hover:text-gray-700"
           }`}
         >
@@ -382,7 +382,7 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
           onClick={() => setMode("filters")}
           className={`flex-1 py-3 px-4 text-sm font-medium transition-colors ${
             mode === "filters"
-              ? "text-green-600 border-b-2 border-green-600 bg-green-50"
+              ? "text-primary-600 border-b-2 border-primary-600 bg-primary-50"
               : "text-gray-500 hover:text-gray-700"
           }`}
         >
@@ -418,7 +418,7 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
                 >
                   <div className={`rounded-lg px-4 py-2 max-w-[80%] break-words ${
                     msg.role === 'user' 
-                      ? 'bg-blue-500 text-white' 
+                      ? 'bg-primary-500 text-white'
                       : 'bg-gray-200'
                   }`}>
                     <div className={`text-sm leading-relaxed font-light whitespace-pre-wrap break-words ${
@@ -464,7 +464,7 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Type your route here"
-                className="flex-1 border rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 text-gray-800 placeholder-gray-500"
+                className="flex-1 border rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary-500 bg-gray-50 text-gray-800 placeholder-gray-500"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();

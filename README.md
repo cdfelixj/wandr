@@ -42,9 +42,11 @@ That idea became Wandr.
   Converts messy or incomplete speech into structured navigation data. Confidence scoring & fallback mechanisms ensure reliability.
 - **Intelligent Route Optimization**  
   Real-time constraints (time, distance, preferences). Integration with Google Directions API.
-- **Sidequest Mode**  
+- **Sidequest Mode**
   Generates spontaneous activity-based routes based on mood, budget, and interests.
-- **Personalized Experience**  
+- **Area Explorer & Location Intelligence**
+  AI-powered area summaries with local business analysis, busyness tracking, and contextual recommendations within customizable radius (100m-5km).
+- **Personalized Experience**
   Learns from behavior patterns, saves places like *Home, Work, Gym*, and adapts over time.
 
 ---
@@ -67,9 +69,11 @@ Wandr is a **modern full-stack AI application** powered by a multi-stage process
 - **Uvicorn** for async performance
 
 ### External AI & APIs
-- **OpenAI Whisper** → voice transcription  
-- **Google Gemini** → natural language intent parsing  
-- **Google Places & Directions APIs** → business info + routing  
+- **OpenAI Whisper** → voice transcription
+- **Google Gemini** → natural language intent parsing
+- **OpenAI GPT-3.5** → area summaries and contextual descriptions
+- **Google Places & Directions APIs** → business info + routing
+- **Google Geocoding API** → reverse location lookup and context
 - **Cohere** → trendiness scoring and multimodal analysis  
 
 ### Infrastructure
@@ -126,6 +130,13 @@ cd wandr
 3. **Route Optimization**: Let Wandr handle the complex routing logic
 
 4. **Sidequest Discovery**: Explore spontaneous activities based on your preferences
+
+5. **Area Explorer**: Click anywhere on the map to get comprehensive area summaries with:
+   - Local business analysis and ratings
+   - Busyness levels and foot traffic insights
+   - AI-generated contextual descriptions with historical context
+   - Smart recommendations based on popularity and ratings
+   - Customizable search radius (100m to 5km)
 
 ---
 

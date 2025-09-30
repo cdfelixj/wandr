@@ -254,12 +254,12 @@ export default function FilterPanel() {
               onChange={(e) => handleEnergyChange(Number(e.target.value))}
               className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               style={{
-                background: `linear-gradient(to right, #10b981 0%, #10b981 ${((filters.energy) / 10) * 100}%, #e5e7eb ${((filters.energy) / 10) * 100}%, #e5e7eb 100%)`
+                background: `linear-gradient(to right, var(--success-500) 0%, var(--success-500) ${((filters.energy) / 10) * 100}%, var(--gray-200) ${((filters.energy) / 10) * 100}%, var(--gray-200) 100%)`
               }}
             />
             <div className="flex justify-between text-xs text-gray-500 mt-2">
               <span>0</span>
-              <span className="text-green-600 font-medium">{filters.energy}</span>
+              <span className="text-success-600 font-medium">{filters.energy}</span>
               <span>10</span>
             </div>
           </div>
@@ -275,7 +275,7 @@ export default function FilterPanel() {
                   type="checkbox"
                   checked={filters.interests[interest]}
                   onChange={() => handleInterestChange(interest)}
-                  className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                  className="w-4 h-4 text-success-600 border-gray-300 rounded focus:ring-success-500"
                 />
                 <span className="text-sm text-gray-700 capitalize">{interest}</span>
               </label>
@@ -295,12 +295,12 @@ export default function FilterPanel() {
               onChange={(e) => handleBudgetChange(Number(e.target.value))}
               className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               style={{
-                background: `linear-gradient(to right, #10b981 0%, #10b981 ${(filters.budget / 400) * 100}%, #e5e7eb ${(filters.budget / 400) * 100}%, #e5e7eb 100%)`
+                background: `linear-gradient(to right, var(--success-500) 0%, var(--success-500) ${(filters.budget / 400) * 100}%, var(--gray-200) ${(filters.budget / 400) * 100}%, var(--gray-200) 100%)`
               }}
             />
             <div className="flex justify-between text-xs text-gray-500 mt-2">
               <span>$0</span>
-              <span className="text-green-600 font-medium">${filters.budget}</span>
+              <span className="text-success-600 font-medium">${filters.budget}</span>
               <span>$400</span>
             </div>
           </div>
@@ -316,7 +316,7 @@ export default function FilterPanel() {
                 type="time"
                 value={filters.time.start}
                 onChange={(e) => handleTimeChange('start', e.target.value)}
-                className="w-full px-3 py-2 border-0 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500 bg-green-50 text-green-700"
+                className="w-full px-3 py-2 border-0 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-success-500 bg-success-50 text-success-700"
               />
             </div>
             <div>
@@ -325,7 +325,7 @@ export default function FilterPanel() {
                 type="time"
                 value={filters.time.end}
                 onChange={(e) => handleTimeChange('end', e.target.value)}
-                className="w-full px-3 py-2 border-0 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500 bg-green-50 text-green-700"
+                className="w-full px-3 py-2 border-0 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-success-500 bg-success-50 text-success-700"
               />
             </div>
           </div>
@@ -341,7 +341,7 @@ export default function FilterPanel() {
                   type="checkbox"
                   checked={filters.indoorOutdoor[type]}
                   onChange={() => handleIndoorOutdoorChange(type)}
-                  className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                  className="w-4 h-4 text-success-600 border-gray-300 rounded focus:ring-success-500"
                 />
                 <span className="text-sm text-gray-700 capitalize">{type}</span>
               </label>
@@ -358,7 +358,7 @@ export default function FilterPanel() {
               value={filters.distance}
               onChange={(e) => handleDistanceChange(e.target.value)}
               placeholder="(km)"
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-green-500"
+              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-success-500"
             />
           </div>
         </div>
@@ -367,7 +367,7 @@ export default function FilterPanel() {
         <div className="pt-4">
           <button
             onClick={handleGenerateSidequest}
-            className="w-full bg-green-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-green-600 transition-colors flex items-center justify-center space-x-2"
+            className="w-full bg-success-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-success-600 transition-colors flex items-center justify-center space-x-2"
           >
             <Wand2 size={18} />
             <span>Generate Sidequest</span>

@@ -247,7 +247,7 @@ export default function RoutePlanningPanel() {
 
       {/* Route Line with Stops */}
       <div className="relative mb-8">
-        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-green-500"></div>
+        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-success-500"></div>
 
         {uiStops.map((s, idx) => (
           <div key={s.id} className="relative flex items-start mb-6 group">
@@ -278,7 +278,7 @@ export default function RoutePlanningPanel() {
           <div className="w-4 h-4 rounded-full border-2 border-dashed border-gray-300"></div>
           <button
             onClick={addStop}
-            className="ml-4 flex items-center text-sm font-medium text-gray-600 hover:text-green-600 transition-colors"
+            className="ml-4 flex items-center text-sm font-medium text-gray-600 hover:text-success-600 transition-colors"
           >
             <Plus size={16} className="mr-1" />
             Add stop
@@ -291,7 +291,7 @@ export default function RoutePlanningPanel() {
         <button
           onClick={handleStart}
           disabled={loading}
-          className="bg-green-500 text-white px-8 py-3 rounded-xl text-sm font-semibold hover:bg-green-600 active:scale-95 transition-all flex items-center shadow-md disabled:opacity-70"
+          className="bg-success-500 text-white px-8 py-3 rounded-xl text-sm font-semibold hover:bg-success-600 active:scale-95 transition-all flex items-center shadow-md disabled:opacity-70"
         >
           {loading ? (
             <>
