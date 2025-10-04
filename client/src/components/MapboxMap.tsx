@@ -74,7 +74,7 @@ export default function MapboxMap() {
       style: "mapbox://styles/mapbox/streets-v12", // has composite source for buildings
       center: userLocation
         ? [userLocation.longitude, userLocation.latitude] // 👈 use user location
-        : [-80.524, 43.464],
+        : [114.1694, 22.3193], // Hong Kong coordinates
       zoom: 12,
       pitch: 0, // 👈 tilt for 3D
       bearing: 0, // 👈 rotate for depth

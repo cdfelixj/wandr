@@ -16,8 +16,8 @@ def search(intent):
     Returns:
         List of place candidates in the format expected by sidequest functionality
     """
-    # Extract location from intent (default to Waterloo if not provided)
-    location = intent.get("location", {"lat": 43.4643, "lon": -80.5204})
+    # Extract location from intent (default to Hong Kong if not provided)
+    location = intent.get("location", {"lat": 22.3193, "lon": 114.1694})
     
     # Fetch places using the existing activity service
     places = fetch_google_places(location["lat"], location["lon"])

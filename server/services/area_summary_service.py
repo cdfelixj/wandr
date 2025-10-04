@@ -339,7 +339,25 @@ class AreaSummaryService:
                 return {"error": "OpenAI client not available"}
             
             # Prepare context for AI
-            location_name = f"{city_info.get('neighborhood', 'this area')} in {city_info.get('city', 'the city')}"
+            # Build location name intelligently - only include parts that are not "Unknown"
+            neighborhood = city_info.get('neighborhood', '')
+            city = city_info.get('city', '')
+            
+            # Filter out "Unknown" values
+            location_parts = []
+            if neighborhood and neighborhood != "Unknown":
+                location_parts.append(neighborhood)
+            if city and city != "Unknown":
+                location_parts.append(city)
+            
+            # Build the location name
+            if len(location_parts) == 2:
+                location_name = f"{location_parts[0]} in {location_parts[1]}"
+            elif len(location_parts) == 1:
+                location_name = location_parts[0]
+            else:
+                location_name = "this area"
+            
             place_types = []
             notable_places = []
             
@@ -403,9 +421,27 @@ class AreaSummaryService:
             
         except Exception as e:
             print(f"[Area Summary] Error generating AI summary: {e}")
+            
+            # Build location name for error case - same logic as above
+            neighborhood = city_info.get('neighborhood', '')
+            city = city_info.get('city', '')
+            
+            location_parts = []
+            if neighborhood and neighborhood != "Unknown":
+                location_parts.append(neighborhood)
+            if city and city != "Unknown":
+                location_parts.append(city)
+            
+            if len(location_parts) == 2:
+                error_location_name = f"{location_parts[0]} in {location_parts[1]}"
+            elif len(location_parts) == 1:
+                error_location_name = location_parts[0]
+            else:
+                error_location_name = "This area"
+            
             return {
                 "error": f"Could not generate AI summary: {str(e)}",
-                "location_name": f"{city_info.get('neighborhood', 'This area')} in {city_info.get('city', 'the city')}"
+                "location_name": error_location_name
             }
 
 # Convenience function for easy integration

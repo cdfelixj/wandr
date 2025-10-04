@@ -217,7 +217,7 @@ export default function FilterPanel() {
         // Create waypoints: user location + all activity locations
         const waypoints: [number, number][] = [
           [location.longitude, location.latitude], // User location first
-          ...placeStops.map(stop => [stop.lng, stop.lat])
+          ...placeStops.map(stop => [stop.lng, stop.lat] as [number, number])
         ];
         setWaypoints(waypoints);
 
@@ -240,11 +240,10 @@ export default function FilterPanel() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
-      <div className="space-y-6">
-        {/* Energy Section */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">Energy (0-10)</label>
+    <div className="space-y-6">
+      {/* Energy Section */}
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-3">Energy (0-10)</label>
           <div className="relative">
             <input
               type="range"
@@ -374,6 +373,5 @@ export default function FilterPanel() {
           </button>
         </div>
       </div>
-    </div>
   );
 }

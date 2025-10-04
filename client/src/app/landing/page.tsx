@@ -21,29 +21,17 @@ export default function LandingPage() {
         <div className="max-w-4xl w-full mx-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             
-            {/* Left Side - Logo and Content */}
+            {/* Left Side  Content */}
             <div className="flex-1 text-center lg:text-left space-y-8">
-              {/* Logo */}
-              <div className="flex justify-center lg:justify-start">
-                <div className="w-55 h-55 relative mb-[-50]">
-                  <Image
-                    src="/logo.png"
-                    alt="Wandr Logo"
-                    width={120}
-                    height={120}
-                    className="w-full h-full object-contain drop-shadow-xl"
-                    priority
-                  />
-                </div>
-              </div>
+            
 
               {/* Title */}
-              <div className= "mt-[-50px]">
+              <div className="-mt-12">
                 <h1 className="text-3xl lg:text-4xl font-bold text-gray-600 mb-6">
                   You can go anywhere.
                 </h1>
                 <p className="text-gray-700 text-base lg:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
-                  An AI-powered driving companion that optimizes your route and curates sidequests. 
+                  An AI-powered driving companion that optimizes your route and curates sidequests and find things to do!
                   Get where you need to go, and discover where you didn&apos;t know you wanted to.
                 </p>
               </div>
@@ -161,7 +149,7 @@ export default function LandingPage() {
       <footer className="w-full py-8 bg-gray-50 border-t border-gray-200 relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-gray-600 text-sm">
-            © 2025 Made with ❤️ at Hack the North
+            © 2025 Made by Felix Pangestu
           </p>
         </div>
       </footer>

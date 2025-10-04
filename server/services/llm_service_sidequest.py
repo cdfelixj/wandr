@@ -73,7 +73,7 @@ def parse_intent(text: str) -> Dict[str, Any]:
         budget = 200
     
     # Default location (Waterloo, ON)
-    location = {"lat": 43.4643, "lon": -80.5204}
+    location = {"lat": 22.3193, "lon": 114.1694}
     
     return {
         "available_time_hours": available_time_hours,

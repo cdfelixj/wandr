@@ -49,7 +49,7 @@ export default function Home() {
   }
 
   // Extract user ID for passing to components
-  const userSub = user.sub || user.id || null;
+  const userSub = user.sub || null;
 
   return (
     <RouteProvider>
@@ -62,8 +62,8 @@ export default function Home() {
           <Image
             src="/logo.png"
             alt="Wandr Logo"
-            width={90}
-            height={50}
+            width={180}
+            height={100}
             className="object-contain"
           />
           <UserProfile />

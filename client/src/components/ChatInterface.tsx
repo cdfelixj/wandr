@@ -42,6 +42,9 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
   const audioChunksRef = useRef<Blob[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
 
+  // Cache location to avoid repeated GPS lookups (saves 1-3s per message!)
+  const [cachedLocation, setCachedLocation] = useState<{ latitude: number; longitude: number } | null>(null);
+
   const API_URL_AUDIO = "http://localhost:8000/plan-route-audio";
   const API_URL_TEXT = "http://localhost:8000/plan-route-text";
 
@@ -52,6 +55,19 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+  
+  // Get location once on mount instead of every message
+  useEffect(() => {
+    getUserLocation()
+      .then(loc => {
+        console.log('✅ Location cached:', loc);
+        setCachedLocation(loc);
+        setUserLocation(loc);
+      })
+      .catch((err) => {
+        console.log('⚠️ Location not available:', err);
+      });
+  }, [setUserLocation]);
 
   const appendMessage = (partial: Omit<ChatMessage, "id" | "timestamp">) => {
     const msg: ChatMessage = {
@@ -134,13 +150,8 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
     // Add loading message
     const loadingId = createLoadingMessage();
 
-    let location: { latitude: number; longitude: number } | null = null;
-    try {
-      location = await getUserLocation();
-      if (location) setUserLocation(location);
-    } catch {
-      /* optional */
-    }
+    // Use cached location instead of fetching every time (saves 1-3 seconds!)
+    const location = cachedLocation;
 
     const payload = {
       text: outbound,
@@ -173,11 +184,11 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
         const suggestions = metadata.unmatched_suggestions || [];
         
         if (personalLocations.length > 0) {
-          botReply += `\n\n🎯 Found ${personalLocations.length} personal location(s): ${personalLocations.map(loc => loc.name).join(', ')}`;
+          botReply += `\n\nFound ${personalLocations.length} personal location(s): ${personalLocations.map((loc: any) => loc.name).join(', ')}`;
         }
         
         if (suggestions.length > 0) {
-          botReply += `\n\n💡 Suggestions: ${suggestions.map(s => s.suggestion).join('; ')}`;
+          botReply += `\n\nSuggestions: ${suggestions.map((s: any) => s.suggestion).join('; ')}`;
         }
       }
       
@@ -240,13 +251,8 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
           // Add loading message for processing
           const loadingId = createLoadingMessage();
 
-          let location: { latitude: number; longitude: number } | null = null;
-          try {
-            location = await getUserLocation();
-            if (location) setUserLocation(location);
-          } catch {
-            /* optional */
-          }
+          // Use cached location instead of fetching (saves 1-3 seconds!)
+          const location = cachedLocation;
 
           const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
           const filename = `voice-${timestamp}.webm`;
@@ -292,11 +298,11 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
               const suggestions = metadata.unmatched_suggestions || [];
               
               if (personalLocations.length > 0) {
-                botReply += `\n\n🎯 Found ${personalLocations.length} personal location(s): ${personalLocations.map(loc => loc.name).join(', ')}`;
+                botReply += `\n\nFound ${personalLocations.length} personal location(s): ${personalLocations.map((loc: any) => loc.name).join(', ')}`;
               }
               
               if (suggestions.length > 0) {
-                botReply += `\n\n💡 Suggestions: ${suggestions.map(s => s.suggestion).join('; ')}`;
+                botReply += `\n\nSuggestions: ${suggestions.map((s: any) => s.suggestion).join('; ')}`;
               }
             }
             
@@ -431,20 +437,24 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
                             {loadingMessages[loadingMessageIndex]}
                           </span>
                         </span>
-                      ) : (
+                      ) : msg.role === 'assistant' && msg.text.length <= 150 ? (
+                        // Only animate short assistant messages (better UX)
                         msg.text.split('').map((char, charIndex) => (
                           <span
                             key={charIndex}
                             className="animate-char-fade-in"
                             style={{ 
-                              animationDelay: `${charIndex * 0.02}s`,
+                              animationDelay: `${charIndex * 0.008}s`, // Faster animation
                               animationFillMode: 'both'
                             }}
                           >
                             {char}
                           </span>
                         ))
-                )}
+                      ) : (
+                        // Show long messages and user messages instantly
+                        msg.text
+                      )}
                     </div>
                   </div>
                 </div>

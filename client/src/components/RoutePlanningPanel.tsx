@@ -226,9 +226,9 @@ export default function RoutePlanningPanel() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 max-h-[52vh] overflow-y-auto transition-all">
+    <div className="bg-white rounded-2xl shadow-xl border border-gray-200 max-h-[52vh] flex flex-col transition-all">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between p-8 pb-4">
         <h2 className="text-lg font-semibold text-gray-800">Route Planner</h2>
 
         {/* Simple profile switcher */}
@@ -245,8 +245,10 @@ export default function RoutePlanningPanel() {
         </select>
       </div>
 
-      {/* Route Line with Stops */}
-      <div className="relative mb-8">
+      {/* Scrollable Content Area */}
+      <div className="flex-1 overflow-y-auto px-8">
+        {/* Route Line with Stops */}
+        <div className="relative mb-8">
         <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-success-500"></div>
 
         {uiStops.map((s, idx) => (
@@ -286,28 +288,7 @@ export default function RoutePlanningPanel() {
         </div>
       </div>
 
-      {/* Start Button */}
-      <div className="flex justify-center">
-        <button
-          onClick={handleStart}
-          disabled={loading}
-          className="bg-success-500 text-white px-8 py-3 rounded-xl text-sm font-semibold hover:bg-success-600 active:scale-95 transition-all flex items-center shadow-md disabled:opacity-70"
-        >
-          {loading ? (
-            <>
-              <Loader2 size={18} className="mr-2 animate-spin" />
-              Calculating…
-            </>
-          ) : (
-            <>
-              <Play size={18} className="mr-2" />
-              Start
-            </>
-          )}
-        </button>
-      </div>
-
-      {/* Directions Panel — appears UNDER the Start button */}
+      {/* Directions Panel — appears UNDER the route stops */}
       <div className="mt-6">
         {error ? (
           <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">
@@ -355,6 +336,28 @@ export default function RoutePlanningPanel() {
             <span className="font-medium">Start</span>.
           </p>
         )}
+      </div>
+    </div>
+
+      {/* Start Button - Sticky at Bottom */}
+      <div className="sticky bottom-0 bg-white border-t border-gray-200 p-6 flex justify-center">
+        <button
+          onClick={handleStart}
+          disabled={loading}
+          className="bg-success-500 text-white px-8 py-3 rounded-xl text-sm font-semibold hover:bg-success-600 active:scale-95 transition-all flex items-center shadow-md disabled:opacity-70"
+        >
+          {loading ? (
+            <>
+              <Loader2 size={18} className="mr-2 animate-spin" />
+              Calculating…
+            </>
+          ) : (
+            <>
+              <Play size={18} className="mr-2" />
+              Start
+            </>
+          )}
+        </button>
       </div>
     </div>
   );

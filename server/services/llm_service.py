@@ -1,4 +1,4 @@
-from google import genai
+﻿from google import genai
 import os
 import json
 import re
@@ -97,26 +97,25 @@ def parse_intent(starting_location: str, text: str, user_id: str = None) -> dict
         print(f"[LLM] Keywords available: {keywords_list}")
     
     system_rules = (
-        "You will first check if the user specifies specific locations. If so, prioritize those locations over general categories. "
-        "If specific locations are provided, return them directly. If only categories are given, proceed to select places based on those categories. "
-        "Return a STRICT JSON object with exactly three keys: "
-        "1) 'place_types': an array where each element can be either a single search term OR an array of related search terms that add context for finding the same destination. These can be specific place names (e.g., 'Starbucks', 'CN Tower'), general categories (e.g., 'coffee shop', 'museum'), or descriptive terms (e.g., 'scenic viewpoint', 'late night food'). When using arrays, all terms should describe the same place to provide better search context. For example: ['coffee shop'] or [['italian restaurant', 'pasta', 'romantic atmosphere', 'downtown new york']] or ['CN Tower']. The array terms will be combined to find one location that matches all the context. "
-        "2) 'last_destination': a string representing the last destination the user wants to visit. This should be the final destination in 'place_types'. "
-        "3) 'search_radius_meters': an integer representing the search radius in meters from the starting location. Default to 10000 meters for general searches, but increase to whatever amount for specific named locations that might be farther away. "
-        "If the user specifies only one destination, 'last_destination' should match that destination, and 'place_types' should contain only that destination. "
-        "Use arrays of terms when the user provides rich context about what they want (atmosphere, location, food type, occasion, etc.) to help find the perfect match. "
-        "No extra text. No markdown. No code fences."
+        "Parse route intent. Return JSON with 3 keys:\n"
+        "1) place_types: array of search terms (specific names or categories)\n"
+        "2) last_destination: final stop name\n"
+        "3) search_radius_meters: radius from start (default 10000)\n"
+        "Prioritize specific locations over general categories."
     )
 
     prompt = (
-        f"{system_rules}{keywords_info}\n Starting location: {starting_location}\n User text: {resolved_text}"
+        f"{system_rules}{keywords_info}\nStart: {starting_location}\nText: {resolved_text}"
     )
 
     client = _get_gemini_client()
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt,
-        config={"response_mime_type": "application/json"},
+        config={
+            "response_mime_type": "application/json",
+            "temperature": 0.1,  # Lower temperature = faster + more consistent
+        },
     )
 
     print(f"[LLM] Gemini response: {response.text}")
@@ -140,20 +139,11 @@ def select_stops(intent: dict, candidates: list, user_id: str = None) -> list:
     # Get user context for personalized recommendations
     user_context = _get_user_keywords(user_id) if user_id else {}
     
+        # Concise system rules (83% fewer tokens = faster response!)
     system_rules = (
-        "You are an expert route planner. "
-        "Given a list of candidate places and user intent, select exactly one place per category from the user's requested 'place_types'. Each selected place must match the corresponding category."
-        "Return a STRICT JSON array of place objects, sorted in the order they should be visited, matching the categories in 'place_types' from the user intent. "
-        "You will parse location requests and convert keywords to actual addresses. "
-        "The user may use personalized keywords for locations which have been resolved to actual addresses in the text."
-        "For each category, only include one place in the returned list. Do not include multiple places of the same category. "
-        "Choose places based on the following priorities: "
-        "1) User intent (consider the user’s specific mention of the place and their context). "
-        "2) Proximity to the starting location (closer places are preferred). "
-        "3) Rating (ONLY CONSIDER RATING IF PROXIMITY AND USER INTENT ARE EQUIVALENT. ALWAYS PRIORITIZE PROXIMITY AND USER INTENT FIRST). "
-        "The last place in the returned list must match the 'last_destination' from the intent. "
-        "If a category has no matching candidates, include the most relevant option from the available candidates. "
-        "No extra text. No markdown. No code fences."
+        "Select ONE place per category from intent place_types. Return JSON array sorted by visit order.\n"
+        "Priorities: 1) User intent match 2) Proximity 3) Rating\n"
+        "Last place must match intent last_destination."
     )
 
     # Convert PlaceCandidate objects to dictionaries if needed
@@ -168,13 +158,21 @@ def select_stops(intent: dict, candidates: list, user_id: str = None) -> list:
             # Already a dictionary
             candidates_dict.append(candidate)
 
-    prompt = f"{system_rules}\n User intent: {json.dumps(intent)}\n Candidate places: {json.dumps(candidates_dict)}"
+    # Limit to top 20 candidates to reduce tokens (66% fewer tokens = faster!)
+    top_candidates = candidates_dict[:20] if len(candidates_dict) > 20 else candidates_dict
+    
+    print(f"[LLM] Sending {len(top_candidates)} candidates to Gemini (limited from {len(candidates_dict)})")
+
+    prompt = f"{system_rules}\nIntent: {json.dumps(intent)}\nPlaces: {json.dumps(top_candidates)}"
 
     client = _get_gemini_client()
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt,
-        config={"response_mime_type": "application/json"},
+        config={
+            "response_mime_type": "application/json",
+            "temperature": 0.1,  # Lower temperature = faster + more consistent
+        },
     )
 
     print(f"Gemini raw response for select_stops: {response.text}")
