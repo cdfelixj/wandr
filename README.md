@@ -14,6 +14,7 @@
 
 Wandr combines natural language processing with comprehensive area analysis. Voice or text input delivers instant insights about neighborhoods, local businesses, and optimized routes.
 ### Demo:
+https://youtu.be/sOnBBTyZX3k
 
 
 <div align="center">
