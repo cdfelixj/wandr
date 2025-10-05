@@ -370,7 +370,7 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
   }, []);
 
   return (
-    <div className="bg-white rounded-tl-2xl rounded-tr-2xl rounded-br-2xl rounded-bl-2xl shadow-lg border border-gray-200 flex flex-col max-h-[40vh]">
+    <div className="bg-white rounded-tl-2xl rounded-tr-2xl rounded-br-2xl rounded-bl-2xl shadow-lg border border-gray-200 flex flex-col max-h-[60vh]">
       {/* Mode Toggle */}
       <div className="flex border-b border-gray-100">
         <button
@@ -386,7 +386,7 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
         </button>
         <button
           onClick={() => setMode("filters")}
-          className={`flex-1 py-3 px-4 text-sm font-medium transition-colors ${
+          className={`flex-1 py-3 px-4 text-sm font-medium transition-colors rounded-tr-2xl ${
             mode === "filters"
               ? "text-primary-600 border-b-2 border-primary-600 bg-primary-50"
               : "text-gray-500 hover:text-gray-700"
@@ -509,7 +509,7 @@ export default function ChatInterface({ userSub }: ChatInterfaceProps) {
           </div>
         </>
       ) : (
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto p-4">
           <FilterPanel />
         </div>
       )}

@@ -366,7 +366,7 @@ export default function FilterPanel() {
         <div className="pt-4">
           <button
             onClick={handleGenerateSidequest}
-            className="w-full bg-success-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-success-600 transition-colors flex items-center justify-center space-x-2"
+            className="w-full bg-black text-white py-3 px-4 rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center justify-center space-x-2"
           >
             <Wand2 size={18} />
             <span>Generate Sidequest</span>

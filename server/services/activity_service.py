@@ -652,14 +652,14 @@ async def fetch_activities_with_scoring(lat: float, lon: float, interests: list,
     Phase 3: Check trendiness for top candidates only (selective Cohere)
     Phase 4: Return best weighted combination
     """
-    print(f"[Activity Service] OPTIMIZED APPROACH: Fetching 20 places per interest")
+    print(f"[Activity Service] OPTIMIZED APPROACH: Fetching 20 places per interest within {travel_distance}km")
     
     # Phase 1: Get activities per interest (reliable approach)
     all_activities = []
     
     for interest in interests:
         print(f"[Activity Service] Fetching places for interest: {interest}")
-        interest_activities = fetch_google_places_by_interest(lat, lon, interest, limit=20)
+        interest_activities = fetch_google_places_by_interest(lat, lon, interest, limit=20, radius_km=travel_distance)
         all_activities.extend(interest_activities)
     
     print(f"[Activity Service] Phase 1 complete: {len(all_activities)} total activities")
@@ -775,9 +775,12 @@ def fetch_nearby_places_bulk(lat: float, lon: float, limit: int = 100):
         print(f"[Google Places] Error in bulk fetch: {e}")
         return []
 
-def fetch_google_places_by_interest(lat: float, lon: float, interest: str, limit: int = 15):
+def fetch_google_places_by_interest(lat: float, lon: float, interest: str, limit: int = 15, radius_km: float = 5):
     """Fetch Google Places activities for a specific interest category"""
     try:
+        # Convert km to meters
+        radius_meters = radius_km * 1000.0
+        
         # Use the new Places API (New) format
         url = "https://places.googleapis.com/v1/places:searchNearby"
         headers = {
@@ -792,7 +795,7 @@ def fetch_google_places_by_interest(lat: float, lon: float, interest: str, limit
                         "latitude": lat,
                         "longitude": lon
                     },
-                    "radius": 5000.0  # 5km radius in meters
+                    "radius": radius_meters  # Use the provided radius
                 }
             },
             "maxResultCount": min(limit, 20)  # searchNearby has a max limit of 20
@@ -804,6 +807,7 @@ def fetch_google_places_by_interest(lat: float, lon: float, interest: str, limit
         
         print(f"[Google Places] API Response status: {response.status_code}")
         print(f"[Google Places] API Response places count: {len(api_data.get('places', []))}")
+        print(f"[Google Places] Search radius: {radius_km}km ({radius_meters}m)")
         
         activities = []
         places = api_data.get("places", [])

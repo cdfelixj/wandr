@@ -1,51 +1,54 @@
-# Wandr
+<div align="center">
+  <img src="client/public/logo.png" alt="Wandr Logo" width="300"/>
+  
+  **AI-Powered Area Intelligence & Route Planning**
+  
+  Natural language route planning with real-time area insights.
+  
+  <img src="client/public/hero-image.png" alt="Wandr Hero" width="800"/>
+</div>
 
-AI-powered travel assistant that converts natural language input into optimized multi-stop routes.
+---
 
 ## Overview
 
-Wandr processes voice and text input to generate intelligent travel routes, eliminating the need for manual navigation app interactions. The system handles complex multi-destination requests, provides area intelligence, and optimizes routes based on real-time constraints.
+Wandr combines natural language processing with comprehensive area analysis. Voice or text input delivers instant insights about neighborhoods, local businesses, and optimized routes.
 
-## Purpose
+<div align="center">
+  <img src="client/public/screenshot-1.png" alt="Route Planning" width="250"/>
+  <img src="client/public/screenshot-2.png" alt="Area Intelligence" width="250"/>
+  <img src="client/public/screenshot-3.png" alt="Navigation" width="250"/>
+</div>
 
-Traditional navigation apps require structured input and manual route planning. Wandr addresses this by:
-- Converting unstructured speech/text into actionable route plans
-- Reducing driver distraction through hands-free operation
-- Providing contextual area information and recommendations
-- Optimizing multi-stop routes automatically
+---
 
-## Core Features
+## Key Features
 
-- **Natural Language Processing**: Voice and text input with intent parsing
-- **Multi-destination Routing**: Automated route optimization with constraints
-- **Area Intelligence**: Location analysis with business data and recommendations  
-- **Voice-first Interface**: Hands-free operation with speech recognition
-- **Personalization**: User preference learning and saved locations
+### **Area Summarizer**
+AI-powered location intelligence with neighborhood demographics, local business insights, and category-specific analysis. Real-time recommendations personalized to user preferences.
 
-## Tech Stack
+### **Natural Language Interface**
+Voice and text input with conversational understanding. Hands-free operation with personalized location keywords.
 
-### Frontend
-- Next.js 15 with React and TypeScript
-- Tailwind CSS for styling
-- Mapbox GL JS for mapping
-- React Query for state management
-- Web Speech API for voice input
+### **Intelligent Route Planning**
+Multi-stop optimization with real-time constraints. Multiple transport modes with turn-by-turn navigation and visual map integration.
 
-### Backend
-- FastAPI with Python 3.11
-- Pydantic for data validation
-- LangGraph for AI workflow orchestration
-- MongoDB for data persistence
+### **Personalization**
+Adaptive recommendations based on usage patterns. Persistent user preferences and saved locations.
 
-### AI/ML Services
-- OpenAI Whisper for speech transcription
-- Google Gemini for intent parsing
-- OpenAI GPT for area summaries
-- Google Places and Directions APIs
-- Cohere for content analysis
+---
 
-### Infrastructure
-- Docker containerization
-- Nginx reverse proxy
-- Redis for caching
+## Technology Stack
+
+**Frontend**  
+Next.js 15 · TypeScript · Tailwind CSS · Mapbox GL · Auth0
+
+**Backend**  
+FastAPI · Python 3.11 · MongoDB · Pydantic
+
+**AI/ML**  
+Google Gemini · OpenAI GPT-4 · Whisper · Cohere · Google Places API
+
+**Infrastructure**  
+Docker · Nginx · Redis
 
