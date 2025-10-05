@@ -8,8 +8,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Wandr - Smart Navigation Assistant",
-  description: "Voice-powered AI navigation for hands-free driving",
+  title: "Wandr",
+  description: "Voice-powered AI navigation",
   icons: {
     icon: "/small-logo.svg",
     shortcut: "/small-logo.svg",

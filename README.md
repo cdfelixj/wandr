@@ -13,12 +13,16 @@
 ## Overview
 
 Wandr combines natural language processing with comprehensive area analysis. Voice or text input delivers instant insights about neighborhoods, local businesses, and optimized routes.
+### Demo:
+
 
 <div align="center">
-  <img src="client/public/screenshot-1.png" alt="Route Planning" width="250"/>
-  <img src="client/public/screenshot-2.png" alt="Area Intelligence" width="250"/>
-  <img src="client/public/screenshot-3.png" alt="Navigation" width="250"/>
+  <img src="client/public/hero-image-3.png" alt="Wandr Hero" width="800"/>
 </div>
+<div align="center">
+  <img src="client/public/hero-image-4.png" alt="Wandr Hero" width="800"/>
+</div>
+
 
 ---
 
